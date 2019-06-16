@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5158444D22B6493D00F7E6FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158444C22B6493D00F7E6FE /* AppDelegate.swift */; };
-		5158444F22B6493D00F7E6FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158444E22B6493D00F7E6FE /* ViewController.swift */; };
+		5158444F22B6493D00F7E6FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158444E22B6493D00F7E6FE /* HomeViewController.swift */; };
 		5158445222B6493D00F7E6FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5158445022B6493D00F7E6FE /* Main.storyboard */; };
 		5158445422B6493F00F7E6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5158445322B6493F00F7E6FE /* Assets.xcassets */; };
 		5158445722B6493F00F7E6FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5158445522B6493F00F7E6FE /* LaunchScreen.storyboard */; };
 		5158446222B6493F00F7E6FE /* YouTubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158446122B6493F00F7E6FE /* YouTubeTests.swift */; };
+		5158446D22B682CC00F7E6FE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158446C22B682CC00F7E6FE /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,7 @@
 /* Begin PBXFileReference section */
 		5158444922B6493D00F7E6FE /* YouTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5158444C22B6493D00F7E6FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5158444E22B6493D00F7E6FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5158444E22B6493D00F7E6FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5158445122B6493D00F7E6FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5158445322B6493F00F7E6FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5158445622B6493F00F7E6FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +37,7 @@
 		5158445D22B6493F00F7E6FE /* YouTubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouTubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5158446122B6493F00F7E6FE /* YouTubeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeTests.swift; sourceTree = "<group>"; };
 		5158446322B6493F00F7E6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5158446C22B682CC00F7E6FE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				5158444C22B6493D00F7E6FE /* AppDelegate.swift */,
-				5158444E22B6493D00F7E6FE /* ViewController.swift */,
+				5158444E22B6493D00F7E6FE /* HomeViewController.swift */,
+				5158446C22B682CC00F7E6FE /* HomeViewModel.swift */,
 				5158445022B6493D00F7E6FE /* Main.storyboard */,
 				5158445322B6493F00F7E6FE /* Assets.xcassets */,
 				5158445522B6493F00F7E6FE /* LaunchScreen.storyboard */,
@@ -197,7 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5158444F22B6493D00F7E6FE /* ViewController.swift in Sources */,
+				5158444F22B6493D00F7E6FE /* HomeViewController.swift in Sources */,
+				5158446D22B682CC00F7E6FE /* HomeViewModel.swift in Sources */,
 				5158444D22B6493D00F7E6FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
