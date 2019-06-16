@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class HomeViewController: UIViewController {
     
@@ -16,8 +17,6 @@ class HomeViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.estimatedRowHeight = 150
-        tableView.rowHeight = UITableView.automaticDimension
         
         return tableView
     }()
@@ -29,10 +28,8 @@ class HomeViewController: UIViewController {
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
         
-        viewModel.reloadTable = {
-            self.tableView.reloadData()
-        }
-        
+        setupViewModel()
+
         view.addSubview(tableView)
         setupConstraints()
     }
@@ -44,6 +41,41 @@ class HomeViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    
+    private func setupViewModel() {
+        viewModel.reloadTable = { indexPath in
+            
+            let offset = self.tableView.contentOffset
+            if offset != .zero {
+                self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+                self.tableView.contentOffset = offset
+            }else{
+                self.tableView.reloadData()
+            }
+        }
+        
+        viewModel.showAlert = {
+            let alert = UIAlertController(title: "Alert", message: "No More data available from API", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        viewModel.didSelectRowAtIndexPath = { indexPath in
+//            let detailViewController = VideoDetailViewController()
+//            self.present(detailViewController, animated: true, completion: nil)
+            
+            let videoURL = "https://www.youtube.com/watch?v=TpdMJBSBvEg"
+            let player = AVPlayer(url: URL(string: videoURL)!)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            
+            self.present(playerViewController, animated: true) {
+                player.play()
+            }
+        }
     }
 }
 

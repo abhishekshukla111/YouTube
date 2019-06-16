@@ -10,26 +10,83 @@ import Foundation
 import UIKit
 
 
+struct YoutubeModel: Codable {
+    var pages: [Page]
+}
+
+struct Page: Codable {
+    var number: Int
+    var data: [YouTubeData]
+}
+
+struct YouTubeData: Codable {
+    var url: String
+    var thumbURL: String
+    var title: String
+    var subTitle: String
+    var vidoDuration: String
+    var index: String
+}
+
 class HomeViewModel: NSObject {
     
-    var reloadTable: (()->Void)?
+    var reloadTable: ((_ indexPath: IndexPath) -> Void)?
+    var showAlert: (()->Void)?
+    var didSelectRowAtIndexPath: ((_ indexPath: IndexPath) -> Void)?
+    
+    var youTubeDataArray: [YouTubeData] = []
     
     var recordsArray:[Int] = Array()
     var limit = 20
     let totalEnteries = 100
     
+    var page = 0
+    
     override init() {
         super.init()
-
-        setup()
+        
+        if let dataArray =  getMockAPIResponse(forPage: page) {
+            setup(dataArray: dataArray)
+        }
     }
     
-    private func setup() {
+    private func setup(dataArray: [YouTubeData]) {
+        
+        for data in  dataArray {
+            youTubeDataArray.append(data)
+        }
+        
+    
         var index = 0
         while index < limit {
             recordsArray.append(index)
             index = index + 1
         }
+    }
+    
+    private func getMockAPIResponse(forPage page: Int) -> [YouTubeData]?{
+       
+        if let path = Bundle.main.path(forResource: "MockYouTubeAPI", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                
+                let youTubeModel = try JSONDecoder().decode(YoutubeModel.self, from: data)
+                
+                if page < youTubeModel.pages.count {
+                    let pageModel = youTubeModel.pages[page]
+                    let youTubeData = pageModel.data
+                    return youTubeData
+                }
+                
+                return nil
+                
+            } catch let error{
+                print("Error : \(error)")
+                return nil
+            }
+        }
+        
+        return nil
     }
 }
 
@@ -37,13 +94,13 @@ class HomeViewModel: NSObject {
 extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recordsArray.count
+        return youTubeDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Row \(recordsArray[indexPath.row])"
+        cell.textLabel?.text = "Row \(youTubeDataArray[indexPath.row].index)"
         
         return cell
     }
@@ -53,23 +110,24 @@ extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == recordsArray.count - 1 {
-            // we are at last cell load more content
-            if recordsArray.count < totalEnteries {
-                // we need to bring more records as there are some pending records available
-                var index = recordsArray.count
-                limit = index + 20
-                while index < limit {
-                    recordsArray.append(index)
-                    index = index + 1
+        if indexPath.row == youTubeDataArray.count - 1 {
+            page = page + 1
+            if let dataArray =  getMockAPIResponse(forPage: page) {
+                
+                //youTubeDataArray.replace(with: youTubeDataArray.array + dataArray)
+                for data in  dataArray {
+
+                    youTubeDataArray.append(data)
                 }
-                self.perform(#selector(loadTable), with: nil, afterDelay: 0.1)
+                
+                reloadTable?(indexPath)
+            } else {
+                showAlert?()
             }
         }
     }
     
-    @objc func loadTable() {
-        reloadTable?()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectRowAtIndexPath?(indexPath)
     }
-    
 }

@@ -14,6 +14,10 @@
 		5158445722B6493F00F7E6FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5158445522B6493F00F7E6FE /* LaunchScreen.storyboard */; };
 		5158446222B6493F00F7E6FE /* YouTubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158446122B6493F00F7E6FE /* YouTubeTests.swift */; };
 		5158446D22B682CC00F7E6FE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158446C22B682CC00F7E6FE /* HomeViewModel.swift */; };
+		5158446F22B68D9A00F7E6FE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158446E22B68D9A00F7E6FE /* HomeTableViewCell.swift */; };
+		5158447122B6A27900F7E6FE /* MockYouTubeAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = 5158447022B6A27800F7E6FE /* MockYouTubeAPI.json */; };
+		5158447322B6CEA100F7E6FE /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158447222B6CEA100F7E6FE /* VideoDetailViewController.swift */; };
+		5158447522B6DB1400F7E6FE /* Local Videos in Resources */ = {isa = PBXBuildFile; fileRef = 5158447422B6DB1400F7E6FE /* Local Videos */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		5158446122B6493F00F7E6FE /* YouTubeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeTests.swift; sourceTree = "<group>"; };
 		5158446322B6493F00F7E6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5158446C22B682CC00F7E6FE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5158446E22B68D9A00F7E6FE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		5158447022B6A27800F7E6FE /* MockYouTubeAPI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockYouTubeAPI.json; sourceTree = "<group>"; };
+		5158447222B6CEA100F7E6FE /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
+		5158447422B6DB1400F7E6FE /* Local Videos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Local Videos"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +90,14 @@
 				5158444C22B6493D00F7E6FE /* AppDelegate.swift */,
 				5158444E22B6493D00F7E6FE /* HomeViewController.swift */,
 				5158446C22B682CC00F7E6FE /* HomeViewModel.swift */,
+				5158446E22B68D9A00F7E6FE /* HomeTableViewCell.swift */,
+				5158447222B6CEA100F7E6FE /* VideoDetailViewController.swift */,
 				5158445022B6493D00F7E6FE /* Main.storyboard */,
+				5158447022B6A27800F7E6FE /* MockYouTubeAPI.json */,
 				5158445322B6493F00F7E6FE /* Assets.xcassets */,
 				5158445522B6493F00F7E6FE /* LaunchScreen.storyboard */,
 				5158445822B6493F00F7E6FE /* Info.plist */,
+				5158447422B6DB1400F7E6FE /* Local Videos */,
 			);
 			path = YouTube;
 			sourceTree = "<group>";
@@ -180,8 +192,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5158447122B6A27900F7E6FE /* MockYouTubeAPI.json in Resources */,
 				5158445722B6493F00F7E6FE /* LaunchScreen.storyboard in Resources */,
 				5158445422B6493F00F7E6FE /* Assets.xcassets in Resources */,
+				5158447522B6DB1400F7E6FE /* Local Videos in Resources */,
 				5158445222B6493D00F7E6FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +216,8 @@
 			files = (
 				5158444F22B6493D00F7E6FE /* HomeViewController.swift in Sources */,
 				5158446D22B682CC00F7E6FE /* HomeViewModel.swift in Sources */,
+				5158446F22B68D9A00F7E6FE /* HomeTableViewCell.swift in Sources */,
+				5158447322B6CEA100F7E6FE /* VideoDetailViewController.swift in Sources */,
 				5158444D22B6493D00F7E6FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
