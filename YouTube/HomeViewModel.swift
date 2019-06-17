@@ -14,7 +14,7 @@ class HomeViewModel: NSObject {
     
     var reloadTable: (() -> Void)?
     var showAlert: (()->Void)?
-    var didSelectRowAtIndexPath: ((_ indexPath: IndexPath) -> Void)?
+    var didSelectRowAtIndexPath: ((_ imageName: String) -> Void)?
     
     var youTubeDataArray: [YouTubeData] = []
     var fetchingMore = false
@@ -105,7 +105,6 @@ extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
         
         cell.thumbnailImageView.image = UIImage(named: dataModel.thumbURL)
         cell.titleLabel.text = dataModel.title
-        //cell.textLabel?.text = "Row \(youTubeDataArray[indexPath.row].index)"
         
         return cell
     }
@@ -123,6 +122,7 @@ extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectRowAtIndexPath?(indexPath)
+        let dataModel = youTubeDataArray[indexPath.row]
+        didSelectRowAtIndexPath?(dataModel.thumbURL)
     }
 }

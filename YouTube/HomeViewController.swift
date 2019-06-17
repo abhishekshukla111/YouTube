@@ -58,10 +58,10 @@ class HomeViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         
-        viewModel.didSelectRowAtIndexPath = { indexPath in
+        viewModel.didSelectRowAtIndexPath = { imageName in
             let dragableViewController = DragableViewController()
+            dragableViewController.imageView.image = UIImage(named: imageName)
             self.navigationController?.pushViewController(dragableViewController, animated: true)
-            //self.present(detailViewController, animated: true, completion: nil)
         }
     }
 }
