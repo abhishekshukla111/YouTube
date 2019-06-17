@@ -18,6 +18,7 @@
 		5158447122B6A27900F7E6FE /* MockYouTubeAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = 5158447022B6A27800F7E6FE /* MockYouTubeAPI.json */; };
 		5158447322B6CEA100F7E6FE /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158447222B6CEA100F7E6FE /* VideoDetailViewController.swift */; };
 		5158447522B6DB1400F7E6FE /* Local Videos in Resources */ = {isa = PBXBuildFile; fileRef = 5158447422B6DB1400F7E6FE /* Local Videos */; };
+		5158447722B7525B00F7E6FE /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158447622B7525B00F7E6FE /* HomeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		5158447022B6A27800F7E6FE /* MockYouTubeAPI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockYouTubeAPI.json; sourceTree = "<group>"; };
 		5158447222B6CEA100F7E6FE /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
 		5158447422B6DB1400F7E6FE /* Local Videos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Local Videos"; sourceTree = "<group>"; };
+		5158447622B7525B00F7E6FE /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				5158444E22B6493D00F7E6FE /* HomeViewController.swift */,
 				5158446C22B682CC00F7E6FE /* HomeViewModel.swift */,
 				5158446E22B68D9A00F7E6FE /* HomeTableViewCell.swift */,
+				5158447622B7525B00F7E6FE /* HomeModel.swift */,
 				5158447222B6CEA100F7E6FE /* VideoDetailViewController.swift */,
 				5158445022B6493D00F7E6FE /* Main.storyboard */,
 				5158447022B6A27800F7E6FE /* MockYouTubeAPI.json */,
@@ -216,6 +219,7 @@
 			files = (
 				5158444F22B6493D00F7E6FE /* HomeViewController.swift in Sources */,
 				5158446D22B682CC00F7E6FE /* HomeViewModel.swift in Sources */,
+				5158447722B7525B00F7E6FE /* HomeModel.swift in Sources */,
 				5158446F22B68D9A00F7E6FE /* HomeTableViewCell.swift in Sources */,
 				5158447322B6CEA100F7E6FE /* VideoDetailViewController.swift in Sources */,
 				5158444D22B6493D00F7E6FE /* AppDelegate.swift in Sources */,

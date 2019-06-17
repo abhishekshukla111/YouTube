@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        viewModel.reloadTable = { indexPath in
+        viewModel.reloadTable = {
             
             let offset = self.tableView.contentOffset
             if offset != .zero {

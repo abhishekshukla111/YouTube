@@ -10,35 +10,14 @@ import Foundation
 import UIKit
 
 
-struct YoutubeModel: Codable {
-    var pages: [Page]
-}
-
-struct Page: Codable {
-    var number: Int
-    var data: [YouTubeData]
-}
-
-struct YouTubeData: Codable {
-    var url: String
-    var thumbURL: String
-    var title: String
-    var subTitle: String
-    var vidoDuration: String
-    var index: String
-}
-
 class HomeViewModel: NSObject {
     
-    var reloadTable: ((_ indexPath: IndexPath) -> Void)?
+    var reloadTable: (() -> Void)?
     var showAlert: (()->Void)?
     var didSelectRowAtIndexPath: ((_ indexPath: IndexPath) -> Void)?
     
     var youTubeDataArray: [YouTubeData] = []
-    
-    var recordsArray:[Int] = Array()
-    var limit = 20
-    let totalEnteries = 100
+    var fetchingMore = false
     
     var page = 0
     
@@ -54,13 +33,6 @@ class HomeViewModel: NSObject {
         
         for data in  dataArray {
             youTubeDataArray.append(data)
-        }
-        
-    
-        var index = 0
-        while index < limit {
-            recordsArray.append(index)
-            index = index + 1
         }
     }
     
@@ -88,6 +60,35 @@ class HomeViewModel: NSObject {
         
         return nil
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        
+        if offsetY > contentHeight - scrollView.frame.height {
+            if !fetchingMore {
+                beginBatchFetch()
+            }
+        }
+    }
+    
+    func beginBatchFetch() {
+        fetchingMore = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0, execute: {
+            self.page = self.page + 1
+            if let dataArray =  self.getMockAPIResponse(forPage: self.page) {
+                for data in  dataArray {
+                    self.youTubeDataArray.append(data)
+                }
+                self.fetchingMore = false
+                self.reloadTable?()
+            } else {
+                self.showAlert?()
+            }
+        })
+    }
 }
 
 
@@ -111,18 +112,8 @@ extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == youTubeDataArray.count - 1 {
-            page = page + 1
-            if let dataArray =  getMockAPIResponse(forPage: page) {
-                
-                //youTubeDataArray.replace(with: youTubeDataArray.array + dataArray)
-                for data in  dataArray {
-
-                    youTubeDataArray.append(data)
-                }
-                
-                reloadTable?(indexPath)
-            } else {
-                showAlert?()
+            if !fetchingMore {
+                beginBatchFetch()
             }
         }
     }
