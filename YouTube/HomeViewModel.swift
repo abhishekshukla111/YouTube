@@ -101,8 +101,10 @@ extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
 
-        cell.thumbnailImageView.image = UIImage(named: "bulletTrain")
-        cell.titleLabel.text = "Title"
+        let dataModel = youTubeDataArray[indexPath.row]
+        
+        cell.thumbnailImageView.image = UIImage(named: dataModel.thumbURL)
+        cell.titleLabel.text = dataModel.title
         //cell.textLabel?.text = "Row \(youTubeDataArray[indexPath.row].index)"
         
         return cell

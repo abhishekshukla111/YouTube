@@ -25,9 +25,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "YouTube"
         
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
+        
         
         setupViewModel()
 
