@@ -24,6 +24,37 @@ class HomeTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
+        
+        contentView.addSubview(thumbnailImageView)
+        contentView.addSubview(titleLabel)
+        
+        setupConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
+            thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            thumbnailImageView.heightAnchor.constraint(equalToConstant: 200)
+            ])
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 20),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+            ])
+    }
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

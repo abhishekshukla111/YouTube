@@ -99,15 +99,17 @@ extension HomeViewModel: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "Row \(youTubeDataArray[indexPath.row].index)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+
+        cell.thumbnailImageView.image = UIImage(named: "bulletTrain")
+        cell.titleLabel.text = "Title"
+        //cell.textLabel?.text = "Row \(youTubeDataArray[indexPath.row].index)"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

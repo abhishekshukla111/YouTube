@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
         
         return tableView
     }()
