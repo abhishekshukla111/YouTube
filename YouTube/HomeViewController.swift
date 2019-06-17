@@ -45,15 +45,7 @@ class HomeViewController: UIViewController {
     
     private func setupViewModel() {
         viewModel.reloadTable = {
-            
-            let offset = self.tableView.contentOffset
-            if offset != .zero {
-                self.tableView.reloadData()
-                self.tableView.layoutIfNeeded()
-                self.tableView.contentOffset = offset
-            }else{
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
         
         viewModel.showAlert = {
@@ -64,17 +56,9 @@ class HomeViewController: UIViewController {
         }
         
         viewModel.didSelectRowAtIndexPath = { indexPath in
-//            let detailViewController = VideoDetailViewController()
-//            self.present(detailViewController, animated: true, completion: nil)
-            
-            let videoURL = "https://www.youtube.com/watch?v=TpdMJBSBvEg"
-            let player = AVPlayer(url: URL(string: videoURL)!)
-            let playerViewController = AVPlayerViewController()
-            playerViewController.player = player
-            
-            self.present(playerViewController, animated: true) {
-                player.play()
-            }
+            let dragableViewController = DragableViewController()
+            self.navigationController?.pushViewController(dragableViewController, animated: true)
+            //self.present(detailViewController, animated: true, completion: nil)
         }
     }
 }
